@@ -1,7 +1,11 @@
 <template>
   	<div>
         <head-top signin-up='home'>
-            <span slot='logo' class="head_logo"  @click="reload">ele.me</span>
+          <!-- <span slot='logo' class="head_logo"  @click="reload">ele.me</span> -->
+          <div slot='logo' class="head_logo"  @click="reload">
+            <img src="../../images/cloud.png" />
+            <span>数营云</span>
+          </div>
         </head-top>
         <nav class="city_nav">
             <div class="city_tip">
@@ -104,9 +108,18 @@ export default {
     .head_logo{
         left: 0.4rem;
         font-weight: 400;
-        @include sc(0.7rem, #fff);
-        @include wh(2.3rem, 0.7rem);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include wh(3.5rem,1rem);
         @include ct;
+        img{
+          @include wh(1rem, 1rem);
+        }
+        span{
+          @include sc(0.7rem, #fff);
+          margin-left: 0.2rem;
+        }
     }
     .city_nav{
         padding-top: 2.35rem;
