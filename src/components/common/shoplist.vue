@@ -3,8 +3,7 @@
 		<ul v-load-more="loaderMore" v-if="shopListArr.length" type="1">
 			<router-link :to="{path: 'shop', query:{geohash, id: item.id}}" v-for="item in shopListArr" tag='li' :key="item.id" class="shop_li">
 				<section>
-					<!-- <img :src="imgBaseUrl + item.image_path" class="shop_img"> -->
-					<img :src="item.image_path" class="shop_img">
+					<img :src="imgBaseUrl + item.image_path" class="shop_img">
 				</section>
 				<hgroup class="shop_right">
 					<header class="shop_detail_header">
@@ -107,11 +106,7 @@ export default {
 		async initData(){
 			//获取数据
 			let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId);
-			this.shopListArr = res.map((item,index)=>{
-        item.image_path = require("../../images/shop_img.png")
-        item.name = "商家名称演示"+(index+1)
-        return item
-      });
+      this.shopListArr = [...res]
 			if (res.length < 20) {
 				this.touchend = true;
 			}
